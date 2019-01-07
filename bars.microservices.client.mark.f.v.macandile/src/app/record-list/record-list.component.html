@@ -1,0 +1,31 @@
+<h5>Choose File</h5>
+<input type='file' (change)="fileChanged($event)">
+<button type='button' (click)="uploadDocument()">Upload</button>
+
+
+<h5>DATA</h5>
+<div *ngIf="recordService.hasError" class="alert alert-danger" role="alert">
+  {{recordService.errMessage}}
+</div>
+<div *ngIf="records?.length>0">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Billing Cycle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of records">
+        <td>{{record.billingCycle}}</td>
+        <td>{{record.firstName}} {{record.lastName}}</td>
+        <td>{{record.amount}}</td>
+        <td>{{record.startDate | date}}</td>
+        <td>{{record.endDate | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
